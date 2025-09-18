@@ -4,7 +4,7 @@ import {onMounted, ref} from 'vue'
 
 <template>
   <div class = "home-header">
-      <h1>Sample Text</h1>
+      <h1>Add Course</h1>
     </div>
 
  
