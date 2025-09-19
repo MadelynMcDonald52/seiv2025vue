@@ -77,15 +77,6 @@ seiv2025vue/
 
 ---
 
-## Troubleshooting
-
-- **CORS Issues:**  
-  Make sure your backend allows requests from the frontend's origin. You may need to enable CORS in your backend configuration.
-- **API URL Issues:**  
-  If you change the backend port or path, update the `baseurl` in [`src/services/CourseServices.js`](src/services/CourseServices.js).
-
----
-
 ## Developers
 
 - Madelyn McDonald
