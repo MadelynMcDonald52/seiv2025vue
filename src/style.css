@@ -29,7 +29,6 @@ button:hover{
   cursor: pointer;
 }
 
-
 .card {
   padding: 2em;
 }
@@ -38,6 +37,7 @@ button:hover{
   display: flex;
   flex-direction: row;
 }
+
 .flex-row-home-buttons{
   display: flex;
   flex-direction: row;
@@ -69,16 +69,26 @@ table {
   width: 80%;
   
 }
+
 .table-home {
   margin: 5vw auto;
   margin-top: 5vw;
   margin-bottom: 1vw;
 }
+
 th, td {
   border: 1px solid #aaa;
   padding: 8px 12px;
   text-align: left;
 }
+
 th {
   background: #f0f0f0;
+}
+
+/* Centering */
+#centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
