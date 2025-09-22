@@ -9,6 +9,17 @@ const hours = ref('')
 const name = ref('')
 const desc = ref('')
 
+// Testing onMounted to see if it works
+// function to return data from database as test
+// const getCourses = async () => {
+//   try {
+//     const response = await CourseServices.getCourses()
+//     console.log(response.data)
+//   } catch (error) {
+//     console.error('Error fetching courses:', error)
+//   }
+// }
+
 const submitForm = () => {
   console.log('Form submitted:', {
     dept: dept.value,
