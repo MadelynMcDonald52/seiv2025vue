@@ -2,12 +2,12 @@
 import {onMounted, ref} from 'vue'
 import CourseServices from '../services/CourseServices.js'
 
-const dept = ref('TEST')
-const courseNum = ref('TEST-0000')
-const level = ref('0')
-const hours = ref('0')
-const name = ref('Test Course')
-const desc = ref('This is a test course description.')
+const dept = ref('')
+const courseNum = ref('')
+const level = ref('')
+const hours = ref('')
+const name = ref('')
+const desc = ref('')
 
 const submitForm = () => {
   const response = CourseServices.addCourse({
