@@ -28,36 +28,60 @@ const apiClient = axios.create({
 });
 
 export default {
+  // Course methods
+
   getCourses() {
     return apiClient.get("");
   },
-
-  getLists() {
-    return apiClient.get("lists");
-  },
-  getList(id) {
-    return apiClient.get("lists/" + id);
-  },
-  addList(list) {
-    return apiClient.post("lists", list);
-  },
-  updateList(listId, list) {
-    return apiClient.put("lists/" + listId, list);
-  },
-  deleteList(listId) {
-    return apiClient.delete("lists/" + listId);
+  getCourse(number) {
+    return apiClient.get("?number=" + number);
   },
 
-  getListItems(listId) {
-    return apiClient.get("lists/" + listId + "/items");
+  addCourse(course) {
+    return apiClient.post("", course);
   },
-  addListItem(listId, item) {
-    return apiClient.post("lists/" + listId + "/items", item);
+  
+
+  // Get Departments
+  getDept(deptId) {
+    return apiClient.get("?dept=" + deptId);
   },
-  updateListItem(listId, itemId, item) {
-    return apiClient.put("lists/" + listId + "/items/" + itemId, item);
+  
+  // Get hours
+  getHours(hours) {
+    return apiClient.get("?hours=" + hours);
   },
-  deleteListItem(listId, itemId) {
-    return apiClient.delete("lists/" + listId + "/items/" + itemId);
+
+  // Get Levels
+  getLevels(level) {
+    return apiClient.get("?level=" + level);
   },
+
+  // Get Names
+  getNames(name) {
+    return apiClient.get("?name=" + name);
+  },
+
+  // addList(list) {
+  //   return apiClient.post("lists", list);
+  // },
+  // updateList(listId, list) {
+  //   return apiClient.put("lists/" + listId, list);
+  // },
+  // deleteList(listId) {
+  //   return apiClient.delete("lists/" + listId);
+  // },
+
+  // getListItems(listId) {
+  //   return apiClient.get("lists/" + listId + "/items");
+  // },
+  // addListItem(listId, item) {
+  //   return apiClient.post("lists/" + listId + "/items", item);
+  // },
+  // updateListItem(listId, itemId, item) {
+  //   return apiClient.put("lists/" + listId + "/items/" + itemId, item);
+  // },
+  // deleteListItem(listId, itemId) {
+  //   return apiClient.delete("lists/" + listId + "/items/" + itemId);
+  // },
 };

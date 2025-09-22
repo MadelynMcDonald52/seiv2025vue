@@ -9,26 +9,16 @@ const hours = ref('')
 const name = ref('')
 const desc = ref('')
 
-// Testing onMounted to see if it works
-// function to return data from database as test
-// const getCourses = async () => {
-//   try {
-//     const response = await CourseServices.getCourses()
-//     console.log(response.data)
-//   } catch (error) {
-//     console.error('Error fetching courses:', error)
-//   }
-// }
-
 const submitForm = () => {
-  console.log('Form submitted:', {
+  const response = CourseServices.addCourse({
     dept: dept.value,
-    courseNum: courseNum.value,
+    course_number: courseNum.value,
     level: level.value,
     hours: hours.value,
     name: name.value,
-    desc: desc.value
+    description: desc.value
   });
+  console.log(response)
 }
 </script>
 
