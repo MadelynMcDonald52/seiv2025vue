@@ -41,10 +41,9 @@ jobs:
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@v2.1.1
         env:
-         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        with:
-          REMOTE_HOST: project1.eaglesoftwareteam.com
+          ARGS: "-rltgoDzvO --delete"
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: "project2.eaglesoftwareteam.com"
           REMOTE_USER: ubuntu
-          REMOTE_PORT: 22
-          SOURCE: dist/
-          TARGET: /var/www/html/project2/2022/t4
+          SOURCE: "dist/"
+          TARGET: "/var/www/html/project2/2022/t4"
