@@ -33,10 +33,6 @@ async function getLists() {
   <div class = "home-header">
     <h1>Course Management</h1>
   </div>
-  <div class = flex-row-home-buttons>
-    <router-link :to="{ name: 'Add' }"><button class="home-button">Add</button></router-link>
-    <router-link :to="{ name: 'Edit' }"><button class="home-button">Edit</button></router-link>
-  </div>
   <div class = flex-row>
     <table class = table-home>
       <tbody>
@@ -49,15 +45,17 @@ async function getLists() {
             <td>{{ list.level }}</td>
             <td>{{ list.hours }}</td>
             <td>{{ list.name }}</td>
-            <td>{{ list.description }}</td>
             <td id="modificationBox">
               <button @click="updateList()" class="green-button" role="link">Update</button>
               <button @click="updateList()" class="green-button" role="link">Delete</button>
             </td>
         </tr>
       </tbody>
-    </table>
-  </div> 
+    </table> 
+  </div>  
+  <div class = flex-row-home-buttons>
+    <router-link :to="{ name: 'Add' }"><button class="home-button">Add</button></router-link>
+  </div>
 </template>
 
 <style scoped>
