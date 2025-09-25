@@ -1,0 +1,49 @@
+name: DEPLOY TO AWS
+#time to test again
+on:
+  push:
+    branches:
+      -dev #added comment
+  pull_request:
+    types: [closed]
+    branches:
+      - dev
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: dev
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x # or 16 depending on your project
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install dependencies for vite
+        run: npm ci
+
+      - name: Fix vite permissions
+        run: chmod +x node_modules/.bin/vite
+
+      - name: Build Vue project
+        run: npx vite build
+
+      - name: List build output
+        run: ls -R dist
+
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@v2.1.1
+        env:
+          ARGS: "-rltgoDzvO --delete"
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: "project2.eaglesoftwareteam.com"
+          REMOTE_USER: ubuntu
+          SOURCE: "dist/"
+          TARGET: "/var/www/html/seiv2025/p1/t4"

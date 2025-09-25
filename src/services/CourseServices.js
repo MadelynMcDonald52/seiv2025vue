@@ -41,6 +41,9 @@ export default {
     return apiClient.post("", course);
   },
   
+  deleteCourse(courseNumber){
+    return apiClient.delete('?number=' + courseNumber)
+  },
 
   // Get Departments
   getDept(deptId) {
