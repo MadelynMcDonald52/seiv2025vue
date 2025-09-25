@@ -6,11 +6,6 @@ import { onBeforeMount } from "vue";
 const message = ref("");
 const lists = ref([]);
 const CNString = "Course Number"
-// const props = defineProps({
-//   id: {
-//     required: true,
-//   },
-// });
 
 onBeforeMount(() => {
   getLists();
@@ -77,6 +72,7 @@ async function deleteCourse(courseNumber){
   </div>  
   <div class = flex-row-home-buttons>
     <router-link :to="{ name: 'Add' }"><button class="home-button">Add</button></router-link>
+    <router-link :to="{ name: 'Import' }"><button class="home-button">Import</button></router-link>
   </div>
 
 </template>
