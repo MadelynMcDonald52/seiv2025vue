@@ -16,6 +16,7 @@ onBeforeMount(() => {
   getLists();
 });
 
+// Gets lists
 async function getLists() {
   try{
     const response = await CourseServices.getCourses();
@@ -27,6 +28,27 @@ async function getLists() {
     console.log(error);
   }
 }
+
+// Delete courses
+// prompts users if they wanted to delete
+async function deleteCourse(courseNumber){
+  if(confirm("Do you want to delete " + courseNumber + '?')){
+    try{
+    console.log('Deleting Course: ' + courseNumber);
+    const response = await CourseServices.deleteCourse(courseNumber);
+    lists.value = response.data;
+    message.value = "";
+
+    location.reload();
+  }
+  catch{
+    message.value = "Error: " + error.code + ":" + error.message;
+    console.log(error);
+  }
+  }
+  
+}
+
 </script>
 
 <template>
@@ -47,7 +69,7 @@ async function getLists() {
             <td>{{ list.name }}</td>
             <td id="modificationBox">
               <button @click="updateList()" class="green-button" role="link">Update</button>
-              <button @click="updateList()" class="green-button" role="link">Delete</button>
+              <button @click="deleteCourse(list['Course Number'])" class="green-button" role="link">Delete</button>
             </td>
         </tr>
       </tbody>
@@ -56,8 +78,8 @@ async function getLists() {
   <div class = flex-row-home-buttons>
     <router-link :to="{ name: 'Add' }"><button class="home-button">Add</button></router-link>
   </div>
+
 </template>
 
 <style scoped>
-
 </style>
