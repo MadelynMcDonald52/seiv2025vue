@@ -58,10 +58,15 @@ async function deleteCourse(courseNumber){
   <div class = flex-row>
     <table class = table-home>
       <tbody>
+          <tr>
+            <td>Dept</td>
+            <td>Number</td>
+            <td>Level</td>
+            <td>Hours</td>
+            <td>Name</td>
+            <td></td>
+        </tr>
         <tr v-for="list in lists" :key="list.index" :list="list">
-            <td>
-              <input type="checkbox" showAddWindow = "true"></input>
-            </td>
             <td>{{ list.Dept }}</td>
             <td>{{ list['Course Number'] }}</td>
             <td>{{ list.level }}</td>
