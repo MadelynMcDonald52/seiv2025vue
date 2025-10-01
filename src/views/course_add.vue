@@ -11,28 +11,22 @@ const desc = ref('')
 
 async function submit() {
   const val = hours.value;
-
-  if (val === 'p') {
+  if ((val.toUpperCase() === 'P' || val.toUpperCase() === 'C') || (!isNaN(parseInt(val, 10)) && parseInt(val, 10) >= 0 && parseInt(val, 10) <= 9)) {
     console.log("hours is " + val);
-  } else if (!isNaN(parseInt(val, 10)) && parseInt(val, 10) >= 0 && parseInt(val, 10) <= 5) {
-    console.log("Hours is " + parseInt(val, 10));
+    const response = await CourseServices.addCourse({
+      dept: dept.value,
+      course_number: courseNum.value,
+      level: level.value,
+      hours: hours.value,
+      name: name.value,
+      description: desc.value
+    });
+    
+    console.log("Success!: " + response);
   } else {
     console.log('BAD DATA!');
   }
-  
-  // else {
-  //   const response = await CourseServices.addCourse({
-  //     dept: dept.value,
-  //     course_number: courseNum.value,
-  //     level: level.value,
-  //     hours: hours.value,
-  //     name: name.value,
-  //     description: desc.value
-  //   });
-    
-  //   console.log("Success!: " + response);
-  // }
-  
+  location.reload()
 }
 
 
