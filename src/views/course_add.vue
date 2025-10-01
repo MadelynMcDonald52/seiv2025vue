@@ -9,17 +9,33 @@ const hours = ref('')
 const name = ref('')
 const desc = ref('')
 
-const submitForm = () => {
-  const response = CourseServices.addCourse({
-    dept: dept.value,
-    course_number: courseNum.value,
-    level: level.value,
-    hours: hours.value,
-    name: name.value,
-    description: desc.value
-  });
-  console.log(response)
+async function submit() {
+  const val = hours.value;
+
+  if (val === 'p') {
+    console.log("hours is " + val);
+  } else if (!isNaN(parseInt(val, 10)) && parseInt(val, 10) >= 0 && parseInt(val, 10) <= 5) {
+    console.log("Hours is " + parseInt(val, 10));
+  } else {
+    console.log('BAD DATA!');
+  }
+  
+  // else {
+  //   const response = await CourseServices.addCourse({
+  //     dept: dept.value,
+  //     course_number: courseNum.value,
+  //     level: level.value,
+  //     hours: hours.value,
+  //     name: name.value,
+  //     description: desc.value
+  //   });
+    
+  //   console.log("Success!: " + response);
+  // }
+  
 }
+
+
 </script>
 
 <template>
@@ -28,13 +44,13 @@ const submitForm = () => {
   </div>
 
   <div id=centered> 
-    <form @submit="submitForm">
-    <input v-model="dept" placeholder="Department" /><br>
-    <input v-model="courseNum" placeholder="Course Number" /><br>
-    <input v-model="level" placeholder="Level" /><br>
-    <input v-model="hours" placeholder="Credit Hours" /><br>
-    <input v-model="name" placeholder="Course Name" /><br>
-    <input v-model="desc" placeholder="Course Description" /><br>
+    <form @submit="submit()">
+    <input v-model="dept" maxlength="4" placeholder="Department" /><br>
+    <input v-model="courseNum" maxlength="10" placeholder="Course Number" /><br>
+    <input v-model="level" maxlength="1" placeholder="Level" /><br>
+    <input v-model="hours" maxlength="1" placeholder="Credit Hours" /><br>
+    <input v-model="name" maxlength="100" placeholder="Course Name" /><br>
+    <input v-model="desc" maxlength="10000" placeholder="Course Description" /><br>
     <button type="submit">Submit</button>
   </form>
  </div>

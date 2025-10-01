@@ -3,7 +3,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 
 import Home from "./views/Home.vue";
 import Add from "./views/course_add.vue";
-import Edit from "./views/Edit_Courses.vue";
+import Edit from "./views/course_modify.vue";
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -20,7 +20,7 @@ const router = createRouter({
 
     },  {
         path: "/",
-      name: "Edit",
+      name: "edit_course",
       component: Edit,
 
     },

@@ -68,7 +68,9 @@ async function deleteCourse(courseNumber){
             <td>{{ list.hours }}</td>
             <td>{{ list.name }}</td>
             <td id="modificationBox">
-              <button @click="updateList()" class="green-button" role="link">Update</button>
+              <router-link :to="{ name: 'edit_course', params: { id: list['Course Number'] } }">
+                <button @click="updateList()" class="green-button" role="link">Update</button>
+              </router-link>
               <button @click="deleteCourse(list['Course Number'])" class="green-button" role="link">Delete</button>
             </td>
         </tr>
