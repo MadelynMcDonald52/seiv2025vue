@@ -27,7 +27,8 @@ async function getLists() {
 // Delete courses
 // prompts users if they wanted to delete
 async function deleteCourse(courseNumber){
-  if(confirm("Do you want to delete " + courseNumber + '?')){
+  if(confirm("Do you want to delete " + courseNumber + '?'))
+  {
     try{
     console.log('Deleting Course: ' + courseNumber);
     const response = await CourseServices.deleteCourse(courseNumber);
@@ -35,11 +36,11 @@ async function deleteCourse(courseNumber){
     message.value = "";
 
     location.reload();
-  }
-  catch{
-    message.value = "Error: " + error.code + ":" + error.message;
-    console.log(error);
-  }
+    }
+    catch{
+      message.value = "Error: " + error.code + ":" + error.message;
+      console.log(error);
+    }
   }
   
 }
