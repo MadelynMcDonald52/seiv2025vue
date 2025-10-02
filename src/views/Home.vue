@@ -6,11 +6,6 @@ import { onBeforeMount } from "vue";
 const message = ref("");
 const lists = ref([]);
 const CNString = "Course Number"
-// const props = defineProps({
-//   id: {
-//     required: true,
-//   },
-// });
 
 onBeforeMount(() => {
   getLists();
@@ -32,7 +27,8 @@ async function getLists() {
 // Delete courses
 // prompts users if they wanted to delete
 async function deleteCourse(courseNumber){
-  if(confirm("Do you want to delete " + courseNumber + '?')){
+  if(confirm("Do you want to delete " + courseNumber + '?'))
+  {
     try{
     console.log('Deleting Course: ' + courseNumber);
     const response = await CourseServices.deleteCourse(courseNumber);
@@ -40,11 +36,11 @@ async function deleteCourse(courseNumber){
     message.value = "";
 
     location.reload();
-  }
-  catch{
-    message.value = "Error: " + error.code + ":" + error.message;
-    console.log(error);
-  }
+    }
+    catch{
+      message.value = "Error: " + error.code + ":" + error.message;
+      console.log(error);
+    }
   }
   
 }
@@ -73,7 +69,9 @@ async function deleteCourse(courseNumber){
             <td>{{ list.hours }}</td>
             <td>{{ list.name }}</td>
             <td id="modificationBox">
-              <button @click="updateList()" class="green-button" role="link">Update</button>
+              <router-link :to="{ name: 'edit_course', params: { id: list['Course Number'] } }">
+                <button @click="updateList()" class="green-button" role="link">Update</button>
+              </router-link>
               <button @click="deleteCourse(list['Course Number'])" class="green-button" role="link">Delete</button>
             </td>
         </tr>
@@ -82,6 +80,7 @@ async function deleteCourse(courseNumber){
   </div>  
   <div class = flex-row-home-buttons>
     <router-link :to="{ name: 'Add' }"><button class="home-button">Add</button></router-link>
+    <router-link :to="{ name: 'Import' }"><button class="home-button">Import</button></router-link>
   </div>
 
 </template>
