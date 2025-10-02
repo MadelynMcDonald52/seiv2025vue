@@ -92,7 +92,9 @@ function removeModal(){
             <td>{{ list.hours }}</td>
             <td>{{ list.name }}</td>
             <td id="modificationBox">
+              
               <button @click="toggleModal(),  selectedList = list['Course Number'], temp_dept = list.Dept, temp_course_number = list['Course Number'], temp_level = list.level, temp_hours = list.hours, temp_name = list.name, temp_desc = list.description" class="green-button" role="link">Update</button>
+              <!-- Button is being made red here! You can remove in pull request!! -->
               <button @click="deleteCourse(list['Course Number'])" class="red-background" role="link">Delete</button>
             </td>
         </tr>
@@ -115,6 +117,7 @@ function removeModal(){
         
       />
     <div class = flex-row-home-buttons>
+    <!-- Red button here as well. -->
    <button @click="removeModal()" class="home-button red-background">Cancel</button>
   </div>
   </div>

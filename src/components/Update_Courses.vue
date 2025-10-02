@@ -57,7 +57,14 @@ const submitForm = async () => {
  
 }
 
-
+onMounted(() =>{
+  dept.value = props.dept;
+  courseNum.value = props.course_number;
+  level.value = props.level;
+  hours.value = props.hours;
+  name.value = props.name;
+  desc.value = props.description
+})
 </script>
 
 <template>
@@ -67,16 +74,18 @@ const submitForm = async () => {
 
   <div id=centered> 
     <form @submit="submitForm">
-    <input v-model="dept" :value="props.dept" id="department" /><br>
-    <input v-model="courseNum" id="courseNum" :value="props.course_number"/><br>
-    <input v-model="level" :value="props.level" /><br>
-    <input v-model="hours" :value="props.hours" /><br>
-    <input v-model="name" :value="props.name" /><br>
-    <input v-model="desc" :value="props.description" /><br>
+    <input v-model="dept"  id="department" /><br>
+    <input v-model="courseNum" id="courseNum" /><br>
+    <input v-model="level"  /><br>
+    <input v-model="hours"  /><br>
+    <input v-model="name" /><br>
+    <input v-model="desc" /><br>
     <button class = "green-background" type="submit">Submit</button>
   </form>
  </div>
 </template>
+
+
 
 <style scoped>
 
