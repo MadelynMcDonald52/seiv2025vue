@@ -2,6 +2,18 @@
 import {onMounted, ref} from 'vue'
 import CourseServices from '../services/CourseServices.js'
 
+
+const submitForm = () => {
+  const response = CourseServices.updateCourse({
+    dept: dept.value,
+    course_number: courseNum.value,
+    level: level.value,
+    hours: hours.value,
+    name: name.value,
+    description: desc.value
+  });
+  console.log(response)
+
 // Data that will go into adding a course
 const dept = ref('')        // Department (Ex: CMSC)
 const courseNum = ref('')   // Course Number: Primary key in Database (Ex: CMSC-4124)
@@ -33,7 +45,9 @@ async function submit() {
     // otherwise, alert the user that something is wrong. Need to be specific?
     alert("Bad data inputted. Please try again!")
   }
+
 }
+
 </script>
 
 <template>
@@ -44,6 +58,7 @@ async function submit() {
 
   <!-- Input Fields -->
   <div id=centered> 
+
     <form @submit="submit()">
     <input v-model="dept" maxlength="4" placeholder="Department" /><br>
     <input v-model="courseNum" maxlength="5" placeholder="Course Number" /><br>
@@ -57,7 +72,7 @@ async function submit() {
 
  <!-- Button to go Back -->
   <div class = flex-row-home-buttons>
-    <router-link :to="{ name: 'Home' }"><button class="home-button">Back</button></router-link>
+    <router-link :to="{ name: 'Home' }"><button class="home-button">Cancel</button></router-link>
   </div>
 </template>
 

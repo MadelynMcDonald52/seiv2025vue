@@ -33,6 +33,7 @@ export default {
   getCourses() {
     return apiClient.get("");
   },
+  //Primary key for course
   getCourse(number) {
     return apiClient.get("?number=" + number);
   },
@@ -40,11 +41,17 @@ export default {
   addCourse(course) {
     return apiClient.post("", course);
   },
+
+  updateCourse(number, course){
+    return apiClient.put("?number=" + number, course)
+  },
   
   deleteCourse(courseNumber){
     return apiClient.delete('?number=' + courseNumber)
   },
 
+  //Just want to note these get all the courses that have the same dept name, hours, or level, etc.
+  //not all the departments.
   // Get Departments
   getDept(deptId) {
     return apiClient.get("?dept=" + deptId);
