@@ -10,7 +10,7 @@ const name = ref('')
 const desc = ref('')
 
 const submitForm = () => {
-  const response = CourseServices.addCourse({
+  const response = CourseServices.updateCourse({
     dept: dept.value,
     course_number: courseNum.value,
     level: level.value,
@@ -36,12 +36,12 @@ const submitForm = () => {
     <input v-model="hours" placeholder="Credit Hours" /><br>
     <input v-model="name" placeholder="Course Name" /><br>
     <input v-model="desc" placeholder="Course Description" /><br>
-    <button type="submit">Submit</button>
+    <button class ="green-background"type="submit">Submit</button>
   </form>
  </div>
 
   <div class = flex-row-home-buttons>
-    <router-link :to="{ name: 'Home' }"><button class="home-button">Back</button></router-link>
+    <router-link :to="{ name: 'Home' }"><button class="home-button">Cancel</button></router-link>
   </div>
 </template>
 
