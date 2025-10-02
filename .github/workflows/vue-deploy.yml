@@ -44,7 +44,7 @@ jobs:
         env:
           ARGS: "-rltgoDzvO --delete"
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_HOST: "project2.eaglesoftwareteam.com"
+          REMOTE_HOST: "project1.eaglesoftwareteam.com"
           REMOTE_USER: ubuntu
           SOURCE: "dist/"
-          TARGET: "/var/www/html/seiv2025/p2/t4"
+          TARGET: "/var/www/html/seiv2025vue/p2/t4"

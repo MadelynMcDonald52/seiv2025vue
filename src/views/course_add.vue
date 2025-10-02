@@ -13,6 +13,7 @@ const submitForm = () => {
     description: desc.value
   });
   console.log(response)
+}
 
 // Data that will go into adding a course
 const dept = ref('')        // Department (Ex: CMSC)
@@ -75,7 +76,3 @@ async function submit() {
     <router-link :to="{ name: 'Home' }"><button class="home-button">Cancel</button></router-link>
   </div>
 </template>
-
-<style scoped>
-
-</style>
