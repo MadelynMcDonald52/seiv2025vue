@@ -18,7 +18,6 @@ let temp_desc = ""
 
 const CNString = "Course Number"
 
-
 onBeforeMount(() => {
   getLists();
 });
@@ -39,7 +38,8 @@ async function getLists() {
 // Delete courses
 // prompts users if they wanted to delete
 async function deleteCourse(courseNumber){
-  if(confirm("Do you want to delete " + courseNumber + '?')){
+  if(confirm("Do you want to delete " + courseNumber + '?'))
+  {
     try{
     console.log('Deleting Course: ' + courseNumber);
     const response = await CourseServices.deleteCourse(courseNumber);
@@ -47,11 +47,11 @@ async function deleteCourse(courseNumber){
     message.value = "";
       message.
     location.reload();
-  }
-  catch{
-    message.value = "Error: " + error.code + ":" + error.message;
-    console.log(error);
-  }
+    }
+    catch{
+      message.value = "Error: " + error.code + ":" + error.message;
+      console.log(error);
+    }
   }
   
 }
@@ -73,19 +73,51 @@ function removeModal(){
 
 //Boolean value to trigger when the modal appears
 
+let input = ref("");
+let arr = [];
+let deptArr = [];
+
+function filteredList() {
+  arr = [];
+  deptArr = [];
+
+  for (let Dept in lists.value) {
+    arr.push(lists.value[Dept]);
+  } 
+
+  for (let el in arr) {
+    if(arr[el].Dept.includes(input.value.toUpperCase())){
+      deptArr.push(arr[el]);
+    }
+  }
+  
+  if(input.value.toUpperCase() == ""){
+  return arr;
+  }else{ 
+    return deptArr;
+  }
+}
 </script>
 
 <template>
   <div class = "home-header">
     <h1>Course Management</h1>
   </div>
+  <div class = flex-row-home-buttons>
+   <input type="text" class = inputBetter v-model="input" placeholder="Search dept..." />
+  </div>
   <div class = flex-row>
     <table class = table-home>
       <tbody>
-        <tr v-for="list in lists" :key="list.index" :list="list">
-            <td>
-              <input type="checkbox" showAddWindow = "true"></input>
-            </td>
+          <tr>
+            <td>Dept</td>
+            <td>Number</td>
+            <td>Level</td>
+            <td>Hours</td>
+            <td>Name</td>
+            <td></td>
+        </tr>
+        <tr v-for="list in filteredList()" :key="list.index" :list="list">
             <td>{{ list.Dept }}</td>
             <td>{{ list['Course Number'] }}</td>
             <td>{{ list.level }}</td>
@@ -103,6 +135,7 @@ function removeModal(){
   </div>  
   <div class = flex-row-home-buttons>
     <router-link :to="{ name: 'Add' }"><button class="home-button">Add</button></router-link>
+    <router-link :to="{ name: 'Import' }"><button class="home-button">Import</button></router-link>
   </div>
   <div v-if="showModal" id =update-modal>
     <Update_Courses 

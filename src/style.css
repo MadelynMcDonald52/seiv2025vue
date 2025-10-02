@@ -12,20 +12,29 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+
 tbody{
     display: block;
     height: 50vh; 
     overflow-y: auto; /* Enable vertical scrolling */
     width: calc(100% - 17px); /* Adjust for scrollbar width if needed */
 }
+
+  tbody tr {
+    display: table; /* Maintain table row behavior within the block tbody */
+    width: 100%;
+    table-layout: fixed;
+  }
+
 button {
-  background-color: #ce6348;
+  background-color: #d3eaf0;
   color:#000C0F;
   border-radius: 30px;
   font-size: 1.2vw;
   border-style: none;
   font-weight: bold;
   transition: 0.5s;
+  margin: 2px;
 }
 
 button:hover{
@@ -113,4 +122,20 @@ th {
   align-items: center;
 }
 
+/*import*/
+#import-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#back-div {
+  padding-left: 85vw;
+}
+
+.inputBetter {
+  border: 2px solid blue;
+  padding: 8px;
+  font-size: 16px;
+}
 
