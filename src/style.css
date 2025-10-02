@@ -18,6 +18,11 @@ tbody{
     overflow-y: auto; /* Enable vertical scrolling */
     width: calc(100% - 17px); /* Adjust for scrollbar width if needed */
 }
+  tbody tr {
+    display: table; /* Maintain table row behavior within the block tbody */
+    width: 100%;
+    table-layout: fixed;
+  }
 button {
   background-color: #ce6348;
   color:#000C0F;
@@ -96,4 +101,15 @@ th {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/*import*/
+#import-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#back-div {
+  padding-left: 85vw;
 }
