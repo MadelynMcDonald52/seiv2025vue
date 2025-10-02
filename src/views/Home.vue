@@ -45,11 +45,38 @@ async function deleteCourse(courseNumber){
   
 }
 
+let input = ref("");
+let arr = [];
+let deptArr = [];
+
+function filteredList() {
+  arr = [];
+  deptArr = [];
+
+  for (let Dept in lists.value) {
+    arr.push(lists.value[Dept]);
+  } 
+
+  for (let el in arr) {
+    if(arr[el].Dept.includes(input.value.toUpperCase())){
+      deptArr.push(arr[el]);
+    }
+  }
+  
+  if(input.value.toUpperCase() == ""){
+  return arr;
+  }else{ 
+    return deptArr;
+  }
+}
 </script>
 
 <template>
   <div class = "home-header">
     <h1>Course Management</h1>
+  </div>
+  <div class = flex-row-home-buttons>
+   <input type="text" class = inputBetter v-model="input" placeholder="Search dept..." />
   </div>
   <div class = flex-row>
     <table class = table-home>
@@ -62,14 +89,14 @@ async function deleteCourse(courseNumber){
             <td>Name</td>
             <td></td>
         </tr>
-        <tr v-for="list in lists" :key="list.index" :list="list">
+        <tr v-for="list in filteredList()" :key="list.index" :list="list">
             <td>{{ list.Dept }}</td>
             <td>{{ list['Course Number'] }}</td>
             <td>{{ list.level }}</td>
             <td>{{ list.hours }}</td>
             <td>{{ list.name }}</td>
             <td id="modificationBox">
-              <router-link :to="{ name: 'edit_course', params: { id: list['Course Number'] } }">
+              <router-link :to="{ name: 'edit_course', query: { id: list['Course Number'] } }">
                 <button @click="updateList()" class="green-button" role="link">Update</button>
               </router-link>
               <button @click="deleteCourse(list['Course Number'])" class="green-button" role="link">Delete</button>
