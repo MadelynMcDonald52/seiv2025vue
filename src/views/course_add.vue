@@ -13,6 +13,7 @@ const submitForm = () => {
     description: desc.value
   });
   console.log(response)
+}
 
 // Data that will go into adding a course
 const dept = ref('')        // Department (Ex: CMSC)
