@@ -2,7 +2,8 @@
 import {onMounted, ref} from 'vue'
 import CourseServices from '../services/CourseServices.js'
 
-const lists = ref([]);
+const lists = ref([]);//list for the page display
+const parsedList = [];//list to send to the database
 
 function addListener() {
     const customButton = document.getElementById("import-button");
@@ -19,16 +20,17 @@ function addListener() {
 
             const reader = new FileReader();
 
-            reader.onload = (e) => {
+            reader.onload = (e) => 
+            {
                 const fileContents = e.target.result;
 
                 const lines = fileContents.split("\n");
-                lists.value = lines;
-                
-                lists.value = displayContents(lines);
+                lists.value = displayContents(lines);//the ref version and the array version need the info
+                //console.log(lists);
             };
 
-            reader.onerror = (e) => {
+            reader.onerror = (e) => 
+            {
                 console.error("Error reading file:", e.target.error);
                 document.getElementById("header").innerText = "Error reading file.";
             };
@@ -50,11 +52,58 @@ function displayContents(data)
         array.push(parts);
         //console.log(parts);
     });
-
+    //console.log(array);
+    parsedList.value = array;
     return array;
 }
 
 document.addEventListener('DOMContentLoaded', addListener);
+
+async function addCourses()
+{
+    if(lists.length != 0)
+    {
+        //console.log(parsedList.value);
+        for(const list in parsedList.value)
+        {
+            //console.log(parsedList.value[list]);
+            let parts = parsedList.value[list];
+
+            if(parts[0] != 'Dept')//filter out the first row since it is just the header
+            {
+                let dept = parts[0].toUpperCase(); // Uppercase dept (ex: cmsc => CMSC)
+                const val = parts[3]; // Assigning val to be an actual thing instead of ref('')
+
+                //console.log(parts);
+                //console.log(dept + ", " + parts[1] + ", " + parts[2] + ", " + val + ", " + parts[4] + ", " + parts[5])
+
+                // if data looks good, add that john to the course
+                // I would like to auto uppercase P or C. But we can't have nice things rn :(
+                if ((val === 'P' || val === 'p' || val === 'C' || val === 'c') || (!isNaN(parseInt(val, 10)) && parseInt(val, 10) >= 0 && parseInt(val, 10) <= 9)) {
+                    // Sending that john to the database
+                    const response = await CourseServices.addCourse({
+                        dept: dept,
+                        course_number: parts[1],
+                        level: parts[2],
+                        hours: val,
+                        name: parts[4],
+                        description: parts[5]
+                    });
+                } 
+                else 
+                { 
+                    // otherwise, alert the user that something is wrong. Need to be specific?
+                    alert("Bad data inputted. Please try again!");
+                }
+            }
+        };
+        location.reload() // reload the page to go back home (Because it doesnt do it automatically)
+    }
+    else
+    {
+        //do nothing
+    }
+}
 
 /*
 
@@ -84,7 +133,7 @@ document.addEventListener('DOMContentLoaded', addListener);
     </table> 
     </div>  
     <div id = "import-div">
-        <button @click="" id="import-button">Import!</button>
+        <button @click="addCourses" id="import-button">Import!</button>
     </div>
     <div id = "back-div">
         <router-link :to="{ name: 'Home' }"><button id = "back-button" class="home-button">Back</button></router-link>
