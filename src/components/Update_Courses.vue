@@ -67,12 +67,12 @@ const submitForm = async () => {
 
   <div id=centered> 
     <form @submit="submitForm">
-    <input v-model="dept" :placeholder="props.dept" id="department" /><br>
-    <input v-model="courseNum" id="courseNum" :placeholder="props.course_number"/><br>
-    <input v-model="level" :placeholder="props.level" /><br>
-    <input v-model="hours" :placeholder="props.hours" /><br>
-    <input v-model="name" :placeholder="props.name" /><br>
-    <input v-model="desc" :placeholder="props.description" /><br>
+    <input v-model="dept" :value="props.dept" id="department" /><br>
+    <input v-model="courseNum" id="courseNum" :value="props.course_number"/><br>
+    <input v-model="level" :value="props.level" /><br>
+    <input v-model="hours" :value="props.hours" /><br>
+    <input v-model="name" :value="props.name" /><br>
+    <input v-model="desc" :value="props.description" /><br>
     <button class = "green-background" type="submit">Submit</button>
   </form>
  </div>
