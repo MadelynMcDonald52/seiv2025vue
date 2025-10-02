@@ -2,8 +2,8 @@
 import {onMounted, ref} from 'vue'
 import CourseServices from '../services/CourseServices.js'
 
-const lists = ref([]);
-const parsedList = [];
+const lists = ref([]);//list for the page display
+const parsedList = [];//list to send to the database
 
 function addListener() {
     const customButton = document.getElementById("import-button");
@@ -63,46 +63,41 @@ async function addCourses()
 {
     if(lists.length != 0)
     {
-        //console.log(parsedList);
-        console.log(parsedList.value);
+        //console.log(parsedList.value);
         for(const list in parsedList.value)
         {
-            console.log(parsedList.value[list]);
+            //console.log(parsedList.value[list]);
             let parts = parsedList.value[list];
-            console.log(parts[5]);
-            let dept = parts[0].toUpperCase(); // Uppercase dept (ex: cmsc => CMSC)
-            const val = parts[3]; // Assigning val to be an actual thing instead of ref('')
-            const courseNumVal = parts[0] + '-' + parts[1]; // New value to store dept-courseNumber
 
-            if(parts[5] = "")//database does not like it?
+            if(parts[0] != 'Dept')//filter out the first row since it is just the header
             {
-                console.log(true);
-                //parts[5] = "";
-            }
+                let dept = parts[0].toUpperCase(); // Uppercase dept (ex: cmsc => CMSC)
+                const val = parts[3]; // Assigning val to be an actual thing instead of ref('')
 
-            console.log(parts);
-            console.log(dept + ", " + val + ", " + parts[2] + ", " + courseNumVal + ", " + parts[4] + ", " + parts[5])
+                //console.log(parts);
+                //console.log(dept + ", " + parts[1] + ", " + parts[2] + ", " + val + ", " + parts[4] + ", " + parts[5])
 
-            // if data looks good, add that john to the course
-            // I would like to auto uppercase P or C. But we can't have nice things rn :(
-            if ((val === 'P' || val === 'p' || val === 'C' || val === 'c') || (!isNaN(parseInt(val, 10)) && parseInt(val, 10) >= 0 && parseInt(val, 10) <= 9)) {
-                // Sending that john to the database
-                const response = await CourseServices.addCourse({
-                    dept: dept,
-                    course_number: courseNumVal,
-                    level: parts[2],
-                    hours: val,
-                    name: parts[4],
-                    description: parts[5]
-                });
-            } 
-            else 
-            { 
-                // otherwise, alert the user that something is wrong. Need to be specific?
-                alert("Bad data inputted. Please try again!");
+                // if data looks good, add that john to the course
+                // I would like to auto uppercase P or C. But we can't have nice things rn :(
+                if ((val === 'P' || val === 'p' || val === 'C' || val === 'c') || (!isNaN(parseInt(val, 10)) && parseInt(val, 10) >= 0 && parseInt(val, 10) <= 9)) {
+                    // Sending that john to the database
+                    const response = await CourseServices.addCourse({
+                        dept: dept,
+                        course_number: parts[1],
+                        level: parts[2],
+                        hours: val,
+                        name: parts[4],
+                        description: parts[5]
+                    });
+                } 
+                else 
+                { 
+                    // otherwise, alert the user that something is wrong. Need to be specific?
+                    alert("Bad data inputted. Please try again!");
+                }
             }
         };
-        //location.reload() // reload the page to go back home (Because it doesnt do it automatically)
+        location.reload() // reload the page to go back home (Because it doesnt do it automatically)
     }
     else
     {
