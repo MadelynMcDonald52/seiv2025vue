@@ -12,7 +12,7 @@ const desc = ref('')        // Description: What is the course about?
 
 // Function to submit a new course.
 async function submit() {
-  dept = dept.value.toUpperCase(); // Uppercase dept (ex: cmsc => CMSC)
+  const newDept = dept.value.toUpperCase(); // Uppercase dept (ex: cmsc => CMSC)
   const val = hours.value; // Assigning val to be an actual thing instead of ref('')
   const courseNumVal = dept.value + '-' + courseNum.value; // New value to store dept-courseNumber
 
@@ -21,7 +21,7 @@ async function submit() {
   if ((val.toUpperCase() === 'P' || val.toUpperCase() === 'C') || (!isNaN(parseInt(val, 10)) && parseInt(val, 10) >= 0 && parseInt(val, 10) <= 9)) {
     // Sending that john to the database
     const response = await CourseServices.addCourse({
-      dept: dept.value,
+      dept: newDept,
       course_number: courseNumVal,
       level: level.value,
       hours: hours.value,
