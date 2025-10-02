@@ -31,7 +31,7 @@ const submitForm = () => {
   <div id=centered> 
     <form @submit="submitForm">
     <input v-model="dept" placeholder="Department" id="department" /><br>
-    <input v-model="courseNum" id="courseNum" placeholder="Course Number"/><br>
+    <input v-model="courseNum"  placeholder="Course Number"/><br>
     <input v-model="level" placeholder="Level" /><br>
     <input v-model="hours" placeholder="Credit Hours" /><br>
     <input v-model="name" placeholder="Course Name" /><br>

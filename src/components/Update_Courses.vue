@@ -74,12 +74,12 @@ onMounted(() =>{
 
   <div id=centered> 
     <form @submit="submitForm">
-    <input v-model="dept"  id="department" /><br>
-    <input v-model="courseNum" id="courseNum" /><br>
-    <input v-model="level"  /><br>
-    <input v-model="hours"  /><br>
-    <input v-model="name" /><br>
-    <input v-model="desc" /><br>
+    <input v-model="dept" maxlength="4"  id="department" /><br>
+    <input v-model="courseNum" maxlength="9" id="courseNum" /><br>
+    <input v-model="level" maxlength="1"  /><br>
+    <input v-model="hours" maxlength="1" /><br>
+    <input v-model="name" maxlength="300"/><br>
+    <input v-model="desc" maxlength="2000"/><br>
     <button class = "green-background" type="submit">Submit</button>
   </form>
  </div>
