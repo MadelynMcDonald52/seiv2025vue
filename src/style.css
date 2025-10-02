@@ -24,13 +24,14 @@ tbody{
     table-layout: fixed;
   }
 button {
-  background-color: #ce6348;
+  background-color: #d3eaf0;
   color:#000C0F;
   border-radius: 30px;
   font-size: 1.2vw;
   border-style: none;
   font-weight: bold;
   transition: 0.5s;
+  margin: 2px;
 }
 
 button:hover{
