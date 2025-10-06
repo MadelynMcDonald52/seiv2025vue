@@ -74,8 +74,8 @@ async function addCourses()
                 let dept = parts[0].toUpperCase(); // Uppercase dept (ex: cmsc => CMSC)
                 const val = parts[3]; // Assigning val to be an actual thing instead of ref('')
 
-                //console.log(parts);
-                //console.log(dept + ", " + parts[1] + ", " + parts[2] + ", " + val + ", " + parts[4] + ", " + parts[5])
+                console.log(parts);
+                console.log(dept + ", " + parts[1] + ", " + parts[2] + ", " + val + ", " + parts[4] + ", " + parts[5])
 
                 // if data looks good, add that john to the course
                 // I would like to auto uppercase P or C. But we can't have nice things rn :(
