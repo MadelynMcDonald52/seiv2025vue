@@ -5,12 +5,12 @@ import CourseServices from '../services/CourseServices.js'
 
 const submitForm = () => {
   const response = CourseServices.updateCourse({
-    dept: dept.value,
-    course_number: courseNum.value,
-    level: level.value,
-    hours: hours.value,
-    name: name.value,
-    description: desc.value
+    Dept: dept.value,
+    Course_Number: courseNum.value,
+    Level: level.value,
+    Hours: hours.value,
+    Name: name.value,
+    Description: desc.value
   });
   console.log(response)
 }
@@ -34,12 +34,12 @@ async function submit() {
   if ((val.toUpperCase() === 'P' || val.toUpperCase() === 'C') || (!isNaN(parseInt(val, 10)) && parseInt(val, 10) >= 0 && parseInt(val, 10) <= 9)) {
     // Sending that john to the database
     const response = await CourseServices.addCourse({
-      dept: newDept,
-      course_number: courseNumVal,
-      level: level.value,
-      hours: hours.value,
-      name: name.value,
-      description: desc.value
+      Dept: newDept,
+      Course_Number: courseNumVal,
+      Level: level.value,
+      Hours: hours.value,
+      Name: name.value,
+      Description: desc.value
     });
     location.reload() // reload the page to go back home (Because it doesnt do it automatically)
   } else { 
