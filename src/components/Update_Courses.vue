@@ -39,12 +39,12 @@ const submitForm = async () => {
     props.course_number,
   {
     
-    dept: dept.value,
-    course_number: courseNum.value,
-    level: level.value,
-    hours: hours.value,
-    name: name.value,
-    description: desc.value
+    Dept: dept.value,
+    Course_Number: courseNum.value,
+    Level: level.value,
+    Hours: hours.value,
+    Name: name.value,
+    Description: desc.value
   });
   console.log(response)
    emit('updated')
