@@ -82,12 +82,12 @@ async function addCourses()
                 if ((val === 'P' || val === 'p' || val === 'C' || val === 'c') || (!isNaN(parseInt(val, 10)) && parseInt(val, 10) >= 0 && parseInt(val, 10) <= 9)) {
                     // Sending that john to the database
                     const response = await CourseServices.addCourse({
-                        dept: dept,
-                        course_number: parts[1],
-                        level: parts[2],
-                        hours: val,
-                        name: parts[4],
-                        description: parts[5]
+                        Dept: dept,
+                        Course_Number: parts[1],
+                        Level: parts[2],
+                        Hours: val,
+                        Name: parts[4],
+                        Description: parts[5]
                     });
                 } 
                 else 
