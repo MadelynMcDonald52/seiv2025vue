@@ -35,7 +35,7 @@ const props = defineProps({
 
 const submitForm = async () => {
   try{
- const response = CourseServices.updateCourse(
+ const response = await CourseServices.updateCourse(
     props.course_number,
   {
     
@@ -46,6 +46,7 @@ const submitForm = async () => {
     Name: name.value,
     Description: desc.value
   });
+   location.reload() // reload the page to go back home (Because it doesnt do it automatically)
   console.log(response)
    emit('updated')
    emit('close');
