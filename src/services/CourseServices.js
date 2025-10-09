@@ -31,7 +31,7 @@ export default {
   // Course methods
 
   getCourses() {
-    return apiClient.get("");
+    return apiClient.get("/");
   },
   //Primary key for course
   getCourse(number) {
@@ -39,7 +39,7 @@ export default {
   },
 
   addCourse(course) {
-    return apiClient.post("", course);
+    return apiClient.post("/", course);
   },
 
   updateCourse(number, course){
