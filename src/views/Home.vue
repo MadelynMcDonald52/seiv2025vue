@@ -119,10 +119,10 @@ function filteredList() {
         </tr>
         <tr v-for="list in filteredList()" :key="list.index" :list="list">
             <td>{{ list.Dept }}</td>
-            <td>{{ list['Course Number'] }}</td>
-            <td>{{ list.level }}</td>
-            <td>{{ list.hours }}</td>
-            <td>{{ list.name }}</td>
+            <td>{{ list.Course_Number }}</td>
+            <td>{{ list.Level }}</td>
+            <td>{{ list.Hours }}</td>
+            <td>{{ list.Name }}</td>
             <td id="modificationBox">
               
               <button @click="toggleModal(),  selectedList = list['Course Number'], temp_dept = list.Dept, temp_course_number = list['Course Number'], temp_level = list.level, temp_hours = list.hours, temp_name = list.name, temp_desc = list.description" class="green-button" role="link">Update</button>
