@@ -45,7 +45,6 @@ async function deleteCourse(courseNumber){
     const response = await CourseServices.deleteCourse(courseNumber);
     lists.value = response.data;
     message.value = "";
-      message.
     location.reload();
     }
     catch{
