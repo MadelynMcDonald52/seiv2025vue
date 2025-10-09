@@ -81,9 +81,10 @@ async function addCourses()
                 // I would like to auto uppercase P or C. But we can't have nice things rn :(
                 if ((val === 'P' || val === 'p' || val === 'C' || val === 'c') || (!isNaN(parseInt(val, 10)) && parseInt(val, 10) >= 0 && parseInt(val, 10) <= 9)) {
                     // Sending that john to the database
+
                     const response = await CourseServices.addCourse({
                         Dept: dept,
-                        Course_Number: dept+'-'+parts[1],
+                        Course_Number: parts[1],
                         Level: parts[2],
                         Hours: val,
                         Name: parts[4],
