@@ -127,7 +127,7 @@ function filteredList() {
               
               <button @click="toggleModal(),  selectedList = list.Course_Number, temp_dept = list.Dept, temp_course_number = list.Course_Number, temp_level = list.Level, temp_hours = list.Hours, temp_name = list.Name, temp_desc = list.Description" class="green-button" role="link">Update</button>
               <!-- Button is being made red here! You can remove in pull request!! -->
-              <button @click="deleteCourse(list['Course Number'])" class="red-background" role="link">Delete</button>
+              <button @click="deleteCourse(list.Course_Number)" class="red-background" role="link">Delete</button>
             </td>
         </tr>
       </tbody>

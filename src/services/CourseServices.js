@@ -35,7 +35,7 @@ export default {
   },
   //Primary key for course
   getCourse(number) {
-    return apiClient.get("/" + number);
+    return apiClient.get(`/${number}`);
   },
 
   addCourse(course) {
@@ -43,11 +43,11 @@ export default {
   },
 
   updateCourse(number, course){
-    return apiClient.put("/" + number, course)
+    return apiClient.put(`/${number}`, course)
   },
   
   deleteCourse(courseNumber){
-    return apiClient.delete('/' + courseNumber)
+    return apiClient.delete(`/${courseNumber}`)
   },
 
   //Just want to note these get all the courses that have the same dept name, hours, or level, etc.
