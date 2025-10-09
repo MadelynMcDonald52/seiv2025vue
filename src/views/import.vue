@@ -84,7 +84,7 @@ async function addCourses()
 
                     const response = await CourseServices.addCourse({
                         Dept: dept,
-                        Course_Number: parts[1],
+                        Course_Number: parts[1] + '',
                         Level: parts[2],
                         Hours: val,
                         Name: parts[4],
