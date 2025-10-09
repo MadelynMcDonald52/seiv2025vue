@@ -6,7 +6,7 @@ var baseurl = "";
 if (process.env.NODE_ENV === "development") {
   baseurl = "http://localhost:3467/api/Courses/";
 } else {
-  baseurl = "/api/Courses/";
+  baseurl = "/course-t4/courses";
 }
 
 const apiClient = axios.create({
@@ -35,7 +35,7 @@ export default {
   },
   //Primary key for course
   getCourse(number) {
-    return apiClient.get("?number=" + number);
+    return apiClient.get("/" + number);
   },
 
   addCourse(course) {
@@ -43,18 +43,18 @@ export default {
   },
 
   updateCourse(number, course){
-    return apiClient.put("?number=" + number, course)
+    return apiClient.put("/" + number, course)
   },
   
   deleteCourse(courseNumber){
-    return apiClient.delete('?number=' + courseNumber)
+    return apiClient.delete('/' + courseNumber)
   },
 
   //Just want to note these get all the courses that have the same dept name, hours, or level, etc.
   //not all the departments.
   // Get Departments
   getDept(deptId) {
-    return apiClient.get("?dept=" + deptId);
+    return apiClient.get("/" + deptId);
   },
   
   // Get hours
