@@ -44,6 +44,7 @@ async function submit() {
     location.reload() // reload the page to go back home (Because it doesnt do it automatically)
   } else { 
     // otherwise, alert the user that something is wrong. Need to be specific?
+    // Hello!
     alert("Bad data inputted. Please try again!")
   }
 
